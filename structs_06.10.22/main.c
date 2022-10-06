@@ -1,23 +1,11 @@
 #include <stdio.h>
 
 
-unsigned char inbyte (char *ptr)
-{
-    unsigned char res = 0;
-    for (int i = 0; i < 8; i++)
-    {
-        unsigned char vs = ptr[i] - 48;
-        vs = vs << (7 - i);
-        res = res | vs;
-    }
-    return res;
-}
-
-
 struct my
 {
     char ch;
-int kol;
+    int kol;
+    float chast;
 };
 
 
@@ -28,7 +16,6 @@ char str[20] = "baraban";
 
 int main()
 {
-    
     int i = 0;
     
     while (str[i] != 0)
@@ -44,23 +31,27 @@ int main()
             N ++;
         }
 //    printf("%d\n", N);
-
+    
     struct my new_struct[N];
     
     int j = 0;
+    
+    float i_new = i;
     
     for (int i = 0; i < 256; i++)
         
         if (vs[i] != 0)
         {
             new_struct[j].ch = i;
-            new_struct[j].kol=vs[i];
+            new_struct[j].kol = vs[i];
+            new_struct[j].chast = vs[i] / i_new;
+//            new_struct[j].code = toByte(str);
             j ++;
         }
     
     for (int i = 0; i < N; i++)
     {
-        printf("%c  %d\n", new_struct[i].ch, new_struct[i].kol);
+        printf("%c  %d  %f\n", new_struct[i].ch, new_struct[i].kol, new_struct[i].chast);
     }
     
     return 0;
